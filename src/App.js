@@ -1,24 +1,35 @@
-import logo from './logo.svg';
-import './App.css';
+//import Main from './layout/main.js';
+import MainUser from './pages/MainUser.js'
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes
+} from "react-router-dom";
+import MainGet from './pages/MainGet.js';
+import MainPost from './pages/MainPost.js';
+import MainPut from './pages/MainPut.js';
+import MyAbout from './pages/MyAbout';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+
+    <Router>
+      <Routes>
+        <Route path="/" element={<MainUser />} />
+        <Route path="mainpost" element={<MainPost />} />
+        <Route path="mainget" element={<MainGet />} />
+        <Route path="mainput" element={<MainPut />} />
+        <Route path="about" element={<MyAbout />} />
+      </Routes>
+    </Router>
+
+    // <div className="App">
+    //   {/* <Pro/> */}
+    //   <Album/>
+    // </div>
   );
 }
 
