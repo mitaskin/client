@@ -1,6 +1,7 @@
 //import Main from './layout/main.js';
 import MainUser from './pages/MainUser.js'
 import 'bootstrap/dist/css/bootstrap.min.css';
+import './App.css';
 
 
 import {
@@ -12,6 +13,7 @@ import MainGet from './pages/MainGet.js';
 import MainPost from './pages/MainPost.js';
 import MainPut from './pages/MainPut.js';
 import MyAbout from './pages/MyAbout';
+import MainDelete from './pages/MainDelete.js';
 
 function App() {
   return (
@@ -22,6 +24,7 @@ function App() {
         <Route path="mainpost" element={<MainPost />} />
         <Route path="mainget" element={<MainGet />} />
         <Route path="mainput" element={<MainPut />} />
+        <Route path="maindelete" element={<MainDelete />} />
         <Route path="about" element={<MyAbout />} />
       </Routes>
     </Router>

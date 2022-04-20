@@ -1,5 +1,6 @@
 import React from 'react'
 import AxiPost from '../components/AxiPost'
+import FooterUser from '../layout/FooterUser'
 import HeaderUser from '../layout/HeaderUser'
 
 const MainPost = () => {
@@ -9,7 +10,7 @@ const MainPost = () => {
             <div className='container'>
                 <AxiPost />
             </div>
-
+            <FooterUser />
         </div>
     )
 }

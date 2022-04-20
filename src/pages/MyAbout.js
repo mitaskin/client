@@ -1,8 +1,15 @@
 import React from 'react'
+import FooterUser from '../layout/FooterUser'
+import HeaderUser from '../layout/HeaderUser'
 
 const MyAbout = () => {
   return (
-    <div>MyAbout</div>
+    <>
+      <HeaderUser />
+      <div className='container'>MyAbout</div>
+      <FooterUser/>
+    </>
+
   )
 }
 

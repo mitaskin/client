@@ -1,4 +1,8 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react';
+import axios from "axios";
+import { toast } from 'react-toastify';
+import SingleCard from './SingleCard';
+
 
 const divStyle = {
     width: '300px', maxHeight: '30rem', objectFit: 'cover'
@@ -7,6 +11,21 @@ const divStyle = {
 
 
 const Slider = () => {
+
+    const [randomPhoto, setrandomPhoto] = useState(null);
+
+    useEffect(() => {
+        if (!randomPhoto) {
+            axios
+                .get("https://pixabay.com/api/?key=26373649-9da5b85cbf2f8236e59e94ede&q=electric&image_type=photo&pretty=true")
+                .then(({ data }) => setrandomPhoto(data.hits))
+                //.then(response => console.log(response))
+                .catch(() => { toast("Hata! - Axios Random Photo GET Yapamadı", { type: "error" }); })
+        }
+    }, []);
+
+
+
     return (
         <div>
             <div id="carouselExampleCaptions" className="carousel slide" data-bs-ride="carousel" >
@@ -17,23 +36,23 @@ const Slider = () => {
                 </div>
                 <div className="carousel-inner" >
                     <div className="carousel-item active" >
-                        <img src="/otomatic-1.jpg" className="d-block w-100" alt="..." style={divStyle} />
+                        <img src={randomPhoto ? randomPhoto[Math.floor(Math.random() * 12)].largeImageURL : "/load.jpg"} className="d-block w-100" alt="..." style={divStyle} />
                         <div className="carousel-caption d-none d-md-block">
-                            <h5>First slide label</h5>
+                            <h5>{randomPhoto ? randomPhoto[Math.floor(Math.random() * 12)].tags : "/load.jpg"}</h5>
                             <p>Some representative placeholder content for the first slide.</p>
                         </div>
                     </div>
                     <div className="carousel-item" >
-                        <img src="/soldering-1.jpg" className="d-block w-100" alt="..." style={divStyle} />
+                        <img src={randomPhoto ? randomPhoto[Math.floor(Math.random() * 15)].largeImageURL : "/load.jpg"} className="d-block w-100" alt="..." style={divStyle} />
                         <div className="carousel-caption d-none d-md-block">
-                            <h5>Second slide label</h5>
+                            <h5>{randomPhoto ? randomPhoto[Math.floor(Math.random() * 12)].tags : "/load.jpg"}</h5>
                             <p>Some representative placeholder content for the second slide.</p>
                         </div>
                     </div>
                     <div className="carousel-item">
-                        <img src="/space-man-3.jpg" className="d-block w-100" alt="..." style={divStyle} />
+                        <img src={randomPhoto ? randomPhoto[Math.floor(Math.random() * 18)].largeImageURL : "/load.jpg"} className="d-block w-100" alt="..." style={divStyle} />
                         <div className="carousel-caption d-none d-md-block">
-                            <h5>Third slide label</h5>
+                            <h5>{randomPhoto ? randomPhoto[Math.floor(Math.random() * 12)].tags : "/load.jpg"}</h5>
                             <p>Some representative placeholder content for the third slide.</p>
                         </div>
                     </div>
